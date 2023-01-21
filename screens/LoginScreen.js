@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
 import {PressableButton, InputText} from '../components';
 import {useSelector, useDispatch} from 'react-redux';
 import {setNameAction, setAgeAction} from '../redux/action';
+import { addNewFriend } from '../redux/friends/ActionCreator';
 
 function LoginScreen({navigation}) {
   const {name, age} = useSelector(state => state.userReducer);
@@ -23,6 +24,10 @@ function LoginScreen({navigation}) {
             onPress={() => {
               dispatch(setNameAction('Sivamani'));
               dispatch(setAgeAction(24));
+              dispatch(addNewFriend({
+                "name":"Rahul",
+                "age":14
+              }));
               navigation.navigate('login');
             }}
             customeStyle={{width: '49%', marginRight: '1%'}}
