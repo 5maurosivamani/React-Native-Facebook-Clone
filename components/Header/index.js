@@ -34,7 +34,7 @@ const listData = [
   },
 ];
 
-export function Header() {
+export function Header({showRightMenu}) {
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -45,7 +45,7 @@ export function Header() {
 
     <View style={styles.headerContainer}>
       <Text style={styles.headerText}>facebook</Text>
-      <View style={styles.headerButtonsContainer}>
+      <View style={[styles.headerButtonsContainer, !showRightMenu && {display:"none"}]}>
         <View>
           <IconButton
             IconData={

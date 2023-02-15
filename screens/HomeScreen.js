@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import {setNameAction, setAgeAction} from '../redux/action';
 import {useSelector, useDispatch} from 'react-redux';
+import { AuthContext } from '../context/AuthContext';
 
 function HomeScreen({navigation}) {
   const {name, age} = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
+
+  const {logOut} = useContext(AuthContext)
   return (
     <View style={styles.container}>
       <Text>Name: {name}</Text>
@@ -22,10 +25,9 @@ function HomeScreen({navigation}) {
       <View style={{marginTop: 10}}>
         <Button
           title="Logout"
-          onPress={() => {
-            dispatch(setNameAction(''));
-            dispatch(setAgeAction(0));
-          }}
+          onPress={
+            logOut
+          }
         />
       </View>
     </View>

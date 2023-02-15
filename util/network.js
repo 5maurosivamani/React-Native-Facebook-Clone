@@ -23,6 +23,7 @@ export const fetchAllFriends = async () => {
       id: key,
       name: response.data[key].name,
       age: response.data[key].age,
+      uri: response.data[key].uri,
     };
 
     friends.push(friendsObj);

@@ -95,7 +95,7 @@ android {
 
     namespace "com.facebook"
     defaultConfig {
-        applicationId "com.facebook"
+        applicationId "com.facebook.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
