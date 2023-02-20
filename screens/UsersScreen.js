@@ -25,7 +25,7 @@ function UsersScreen() {
 
   const FriendList = ({item}) => {
     const imageURL = item.uri;
-    console.log(imageURL);
+    // console.log(imageURL);
     return (
       <View style={styles.friendRequestContainer}>
         <Image style={styles.friendListImage} source={{uri: imageURL}} />

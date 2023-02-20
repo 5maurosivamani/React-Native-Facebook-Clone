@@ -41,11 +41,12 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     height: 50,
     backgroundColor: '#fff',
-    fontSize: 18,
+    fontSize: 16,
     paddingLeft: 20,
     borderRadius: 6,
     borderColor: '#c1c1c1',
     borderWidth: 1,
+    color: '#c1c1c1'
   },
-  errorText: { color: '#d60a00'},
+  errorText: { color: 'red', paddingLeft:5},
 });

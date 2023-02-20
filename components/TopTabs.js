@@ -1,6 +1,12 @@
-import {TouchableOpacity, Text, View,Alert} from 'react-native';
+import {TouchableOpacity, Text, View, Alert} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {CameraScreen, SettingsScreen, HomeScreen,ProfileScreen, UsersScreen} from '../screens/index.js';
+import {
+  MenuScreen,
+  SettingsScreen,
+  HomeScreen,
+  ProfileScreen,
+  UsersScreen,
+} from '../screens/index.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,9 +14,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const TopTab = createMaterialTopTabNavigator();
 
 function TopTabs({name}) {
-
-
-
   return (
     <TopTab.Navigator
       screenOptions={{
@@ -18,7 +21,6 @@ function TopTabs({name}) {
         tabBarStyle: {backgroundColor: '#fff'},
         tabBarInactiveTintColor: 'grey',
         tabBarActiveTintColor: 'black',
-      
       }}>
       <TopTab.Screen
         name="Home"
@@ -26,12 +28,11 @@ function TopTabs({name}) {
         options={{
           tabBarLabel: () => (
             <TouchableOpacity style={{width: '100%'}}>
-              <View >
+              <View>
                 <Icon name="home-outline" size={30} color="black" />
               </View>
             </TouchableOpacity>
           ),
-          
         }}
       />
       <TopTab.Screen
@@ -40,11 +41,11 @@ function TopTabs({name}) {
         options={{
           tabBarLabel: () => (
             <TouchableOpacity style={{width: '100%'}}>
-              <View >
-                <Feather name="users" size={30} color="black"  />
+              <View>
+                <Feather name="users" size={30} color="black" />
               </View>
             </TouchableOpacity>
-          )
+          ),
         }}
       />
       <TopTab.Screen
@@ -93,9 +94,9 @@ function TopTabs({name}) {
         }}
       />
 
-<TopTab.Screen
+      <TopTab.Screen
         name="menus"
-        component={SettingsScreen}
+        component={MenuScreen}
         options={{
           tabBarLabel: () => (
             <TouchableOpacity style={{width: '100%'}}>
