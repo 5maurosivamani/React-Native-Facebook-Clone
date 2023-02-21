@@ -1,6 +1,7 @@
 import React, {useState, useEffect, createContext} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import {log} from 'react-native-reanimated';
 
 export const AuthContext = createContext();
 
@@ -11,30 +12,28 @@ function AuthProvider({children}) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = async formData => {
+    console.log(formData);
+
     setIsLoading(true);
 
-    // const serverUrl = `http://192.168.0.109:3000/users?${formData.name}=8098668053&password=${formData.password}`;
-    const serverUrl = `http://10.0.2.2:5001/users`;
+    const serverUrl = `http://192.168.0.109:5001/login?phone=${formData.phone}&email=${formData.email}&password=${formData.password}`;
+    // const serverUrl = `http://192.168.0.109:5001/users`;
 
     await axios
-      .get(serverUrl, { headers:{
-        "Content-Type":"application/json"
-      }})
+      .get(serverUrl)
       .then(response => {
-        console.log(response)
-        return response.data;
-      })
-      .then(data=>{
 
-        console.log(data)
-        if(data.length > 0){
-          setUserToken('DFXX5656DLMMM444');
-          setUserData(formData);
+        console.log(response.data);
+
+        if (response.status === 200) {
+          const {token, userData} = response.data;
+          setUserToken(token);
+          setUserData(userData);
 
           (async () => {
             try {
-              await AsyncStorage.setItem('userToken', 'DFXX5656DLMMM444');
-              await AsyncStorage.setItem('userData', JSON.stringify(formData));
+              await AsyncStorage.setItem('userToken', token);
+              await AsyncStorage.setItem('userData', JSON.stringify(userData));
             } catch (e) {
               console.log(e);
             }
@@ -42,11 +41,8 @@ function AuthProvider({children}) {
 
           setInterval(() => {
             setIsLoading(false);
-            setIsAuthenticated(true)
+            setIsAuthenticated(true);
           }, 2000);
-        }else{
-          setIsLoading(false);
-          setIsAuthenticated(false);
         }
       })
       .catch(err => console.log('Axios Error : ', err));

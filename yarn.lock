@@ -7125,24 +7125,24 @@
     "minimist" "^1.2.0"
     "strip-json-comments" "~2.0.1"
 
-"react-devtools-core@^4.26.1", "react-devtools-core@4.27.1":
-  "integrity" "sha512-qXhcxxDWiFmFAOq48jts9YQYe1+wVoUXzJTlY4jbaATzyio6dd6CUGu3dXBhREeVgpZ+y4kg6vFJzIOZh6vY2w=="
-  "resolved" "https://registry.npmjs.org/react-devtools-core/-/react-devtools-core-4.27.1.tgz"
-  "version" "4.27.1"
+"react-devtools-core@^4.26.1", "react-devtools-core@4.27.2":
+  "integrity" "sha512-8SzmIkpO87alD7Xr6gWIEa1jHkMjawOZ+6egjazlnjB4UUcbnzGDf/vBJ4BzGuWWEM+pzrxuzsPpcMqlQkYK2g=="
+  "resolved" "https://registry.npmjs.org/react-devtools-core/-/react-devtools-core-4.27.2.tgz"
+  "version" "4.27.2"
   dependencies:
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
-"react-devtools@^4.27.1":
-  "integrity" "sha512-v+KnH7VUPQXyl08p8dn91RR3sEb6bM0XhzJjkbNfeEaf0ziESJFg1Ms9l3jBwhgytXmEjIKM5LZOVg9Ov/2LJg=="
-  "resolved" "https://registry.npmjs.org/react-devtools/-/react-devtools-4.27.1.tgz"
-  "version" "4.27.1"
+"react-devtools@^4.27.2":
+  "integrity" "sha512-qfXhvTJhYEZm/RJzTE3uyKRDRk6Tx5ijBuU4f0STHaRol/LcCFDj293w3IWGkOUGv4OvLAPpT5mAH5p7XuueUQ=="
+  "resolved" "https://registry.npmjs.org/react-devtools/-/react-devtools-4.27.2.tgz"
+  "version" "4.27.2"
   dependencies:
     "cross-spawn" "^5.0.1"
     "electron" "^11.1.0"
     "ip" "^1.1.4"
     "minimist" "^1.2.3"
-    "react-devtools-core" "4.27.1"
+    "react-devtools-core" "4.27.2"
     "update-notifier" "^2.1.0"
 
 "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@>=16.13", "react-dom@>=16.8", "react-dom@>=18.0", "react-dom@16.8.x":
@@ -7295,10 +7295,10 @@
   "resolved" "https://registry.npmjs.org/react-native-pager-view/-/react-native-pager-view-6.1.2.tgz"
   "version" "6.1.2"
 
-"react-native-reanimated@^2.14.2":
-  "integrity" "sha512-zj05BBafk38rE78PhHc6q0vg9M4WeJY/RExHUGFiP1miJyyAaJzs2jLQR+HY0zbutCE+/yNJyOE3dca2BslsGg=="
-  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.14.2.tgz"
-  "version" "2.14.2"
+"react-native-reanimated@^2.14.4":
+  "integrity" "sha512-DquSbl7P8j4SAmc+kRdd75Ianm8G+IYQ9T4AQ6lrpLVeDkhZmjWI0wkutKWnp6L7c5XNVUrFDUf69dwETLCItQ=="
+  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.14.4.tgz"
+  "version" "2.14.4"
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"

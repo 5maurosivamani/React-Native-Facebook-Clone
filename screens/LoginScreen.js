@@ -10,40 +10,62 @@ import {
 } from 'react-native';
 import {PressableButton, InputText} from '../components';
 import {AuthContext} from '../context/AuthContext';
-import axios from 'axios';
 
 function LoginScreen({navigation}) {
   const {login, userData, isAuthenticated} = useContext(AuthContext);
   const [authError, setAuthError] = useState('');
 
   const [formData, setFormData] = useState({
-    name: '',
+    email_phone: '',
     password: '',
   });
 
   const [errors, setErrors] = useState({
-    name: '',
+    email_phone: '',
     password: '',
   });
 
   const handleUserName = text => {
-    setFormData(prev => ({...prev, name: text}));
+    setFormData(prev => ({...prev, email_phone: text}));
+  };
+
+  const isNumber = value => {
+    if (typeof value === 'string') {
+      return !isNaN(value);
+    }
   };
 
   const handlePassword = text => {
     setFormData(prev => ({...prev, password: text}));
   };
 
-  const validateForm = ({name, password}) => {
-    if (name === '') {
+  const validateForm = ({email_phone, password}) => {
+
+    if (email_phone === '') {
       setErrors(prev => ({
         ...prev,
-        name: 'Please Enter the Email or Phone number',
+        email_phone: 'Phone or Email is Required',
+      }));
+      return false;
+    } else if (isNumber(email_phone) && email_phone.length !== 10) {
+      setErrors(prev => ({
+        ...prev,
+        email_phone: 'Phone must be 10 digits',
+      }));
+      return false;
+    } else if (
+      !isNumber(email_phone) &&
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email_phone)
+    ) {
+      setErrors(prev => ({
+        ...prev,
+        email_phone: 'Invalid Email',
       }));
       return false;
     } else {
-      setErrors(prev => ({...prev, name: ''}));
+      setErrors(prev => ({...prev, email_phone: ''}));
     }
+
     if (password === '') {
       setErrors(prev => ({...prev, password: 'Please Enter the Password'}));
       return false;
@@ -57,11 +79,21 @@ function LoginScreen({navigation}) {
   const handleLogin = async () => {
     const res = validateForm(formData);
 
-    console.log(formData);
-
     if (res === true) {
-      await login(formData);
-      console.log(isAuthenticated);
+      const postData = {
+        email: '',
+        phone: '',
+        password: formData.password,
+      };
+
+      if (isNumber(formData.email_phone)) {
+        postData.phone = formData.email_phone;
+      } else {
+        postData.email = formData.email_phone;
+      }
+
+      await login(postData);
+      console.log({isAuthenticated});
     }
   };
 
@@ -80,8 +112,8 @@ function LoginScreen({navigation}) {
           <InputText
             placeholder="Phone or Email"
             handleChange={handleUserName}
-            value={formData.name}
-            error={errors.name ? errors.name : ''}
+            value={formData.email_phone}
+            error={errors.email_phone ? errors.email_phone : ''}
           />
           <InputText
             placeholder="Password"
